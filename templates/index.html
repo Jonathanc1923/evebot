@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat con Llama-3.2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        #response {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chat con Llama-3.2</h1>
+    <textarea id="prompt" placeholder="Escribe tu mensaje aquí..."></textarea>
+    <br>
+    <button onclick="sendPrompt()">Enviar</button>
+    <div id="response"></div>
+
+    <script>
+        async function sendPrompt() {
+            const prompt = document.getElementById('prompt').value;
+            const responseDiv = document.getElementById('response');
+            
+            responseDiv.textContent = "Generando respuesta...";
+            
+            const response = await fetch('/generate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ prompt })
+            });
+            
+            const data = await response.json();
+            responseDiv.textContent = data.response;
+        }
+    </script>
+</body>
+</html>
