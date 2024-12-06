@@ -9,7 +9,7 @@ MODEL_FILENAME = "Llama-3.2-3B-Instruct-Q4_0.gguf"
 MODEL_PATH = os.path.join(MODEL_DIR, MODEL_FILENAME)
 
 # Enlace del modelo en AWS S3
-S3_URL = "https://mi-bucket-llama-model.s3.us-east-2.amazonaws.com/Llama-3.2-3B-Instruct-Q4_0.gguf"
+S3_URL = "https://mi-bucket-llama-model.s3.us-east-2.amazonaws.com/Meta-Llama-3-8B-Instruct.Q4_0.gguf"
 
 def download_model():
     """Descarga el modelo desde AWS S3 si no está disponible localmente."""
